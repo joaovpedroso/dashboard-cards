@@ -31,7 +31,7 @@ const RegistrationCard = (props: TRegistrationCard) => {
   };
 
   const handleConfirmDeletion = () => {
-    deleteRegister(props.data.id);
+    deleteRegister(props.data.id ?? "");
   };
 
   const mapCardActions = useMemo(() => ({
