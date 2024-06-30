@@ -1,15 +1,15 @@
-
+import { IRegistration, StatusEnum } from "~/services/registrations/types";
 import * as S from "./styles";
 import RegistrationCard from "../RegistrationCard";
 
 const allColumns = [
-  { status: 'REVIEW', title: "Pronto para revisar" },
-  { status: 'APPROVED', title: "Aprovado" },
-  { status: 'REPROVED', title: "Reprovado" },
+  { status: StatusEnum.REVIEW, title: "Pronto para revisar" },
+  { status: StatusEnum.APROVED, title: "Aprovado" },
+  { status: StatusEnum.REPROVED, title: "Reprovado" },
 ];
 
 type Props = {
-  registrations?: any[];
+  registrations?: IRegistration[];
 };
 const Collumns = (props: Props) => {
   return (
@@ -22,7 +22,7 @@ const Collumns = (props: Props) => {
                 {collum.title}
               </S.TitleColumn>
               <S.CollumContent>
-                {props?.registrations?.map((registration) => {
+                {props?.registrations?.filter(registration => registration.status === collum.status)?.map((registration) => {
                   return (
                     <RegistrationCard
                       data={registration}
@@ -38,4 +38,5 @@ const Collumns = (props: Props) => {
     </S.Container>
   );
 };
+
 export default Collumns;

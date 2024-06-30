@@ -17,7 +17,8 @@ export const _IconButtonStyled = styled.button`
 
 type IconButtonProps = {
   children?: React.ReactNode;
-} & React.HTMLAttributes<HTMLButtonElement>;
+} & React.HTMLProps<HTMLButtonElement>;
+
 
 export const IconButton = (props: IconButtonProps) => {
   return (
