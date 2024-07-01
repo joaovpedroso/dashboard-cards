@@ -5,6 +5,15 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,19 +55,19 @@ jobs:
       - name: Run tests
         run: npm run test:ci
 
-  # deploy:
-  #   needs: test
+  deploy:
+    needs: test
 
-  #   permissions:
-  #     pages: write
-  #     id-token: write
+    permissions:
+      pages: write
+      id-token: write
 
-  #   environment:
-  #     name: github-pages
-  #     url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Deploy to GitHub Pages
-  #       id: deployment
-  #       uses: actions/deploy-pages@v4 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 
