@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://joaovpedroso.github.io/dashboard-cards/",
   "scripts": {
     "dev": "vite",
     "init:db": "json-server --watch db.json",
