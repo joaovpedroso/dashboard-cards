@@ -8,10 +8,11 @@
     "init:db": "json-server --watch db.json",
     "build": "tsc && vite build",
     "test:dev": "jest --watch --verbose --no-cache",
+    "test:ci": "jest --coverage --verbose --no-cache",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "deploy" : "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
